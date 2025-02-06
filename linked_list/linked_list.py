@@ -71,3 +71,22 @@ class LinkedList:
             new_node.next = self.head
             self.head = new_node
         self.length += 1
+
+    def get(self, index):
+        if index < 0 or index >= self.length:
+            return None
+        else:
+            current_node = self.head
+            for _ in range(index):
+                current_node = current_node.next
+            return current_node.value
+        
+    def set(self, index, value):
+        if index < 0 or index >= self.length:
+            return False
+        else:
+            current_node = self.head
+            for _ in range(index):
+                current_node = current_node.next
+            current_node.value = value
+            return True
