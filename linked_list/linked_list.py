@@ -90,3 +90,39 @@ class LinkedList:
                 current_node = current_node.next
             current_node.value = value
             return True
+        
+    def insert(self, index, value):
+        if index < 0 or index > self.length:
+            return False
+        elif index == 0:
+            self.unshift(value)
+            return True
+        elif index == self.length:
+            self.push(value)
+            return True
+        else:
+            new_node = Node(value)
+            current_node = self.head
+            for _ in range(index - 1):
+                current_node = current_node.next
+            new_node.next = current_node.next
+            current_node.next = new_node
+            self.length += 1
+            return True
+        
+    def remove(self, index):
+        if index < 0 or index >= self.length:
+            return False
+        elif index == 0:
+            self.shift()
+            return True
+        elif index == self.length - 1:
+            self.pop()
+            return True
+        else:
+            current_node = self.head
+            for _ in range(index - 1):
+                current_node = current_node.next
+            current_node.next = current_node.next.next
+            self.length -= 1
+            return True
