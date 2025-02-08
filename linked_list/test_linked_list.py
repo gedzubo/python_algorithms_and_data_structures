@@ -102,3 +102,20 @@ def test_remove_out_of_bounds():
     linked_list.push(3)
     assert linked_list.remove(-1) == False
     assert linked_list.remove(3) == False
+
+def test_reverse():
+    linked_list = LinkedList()
+    linked_list.push(1)
+    linked_list.push(2)
+    linked_list.push(3)
+    linked_list.reverse()
+    assert linked_list.print() == '3 -> 2 -> 1'
+
+def test_find_middle_node():
+    linked_list = LinkedList()
+    linked_list.push(1)
+    linked_list.push(2)
+    linked_list.push(3)
+    linked_list.push(4)
+    linked_list.push(5)
+    assert linked_list.find_middle_node() == 3
