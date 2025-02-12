@@ -34,3 +34,20 @@ class DoublyLinkedList:
             current_node = current_node.next
 
         return ' -> '.join(nodes)
+
+    def pop(self):
+        if self.head is None:
+            return None
+        elif self.head == self.tail:
+            value = self.head.value
+            self.head = None
+            self.tail = None
+            self.length -= 1
+            return value
+        else:
+            temp = self.tail
+            self.tail = self.tail.prev
+            self.tail.next = None
+            temp.prev = None
+            self.length -= 1
+            return temp.value
