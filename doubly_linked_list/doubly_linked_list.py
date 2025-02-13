@@ -51,3 +51,20 @@ class DoublyLinkedList:
             temp.prev = None
             self.length -= 1
             return temp.value
+        
+    def shift(self):
+        if self.head is None:
+            return None
+        elif self.length == 1:
+            value = self.head.value
+            self.head = None
+            self.tail = None
+            self.length -= 1
+            return value
+        else:
+            tmp = self.head
+            self.head = self.head.next
+            self.head.prev = None
+            tmp.next = None
+            self.length -= 1
+            return tmp.value
