@@ -31,3 +31,10 @@ def test_shift():
     assert linked_list.shift() == 2
     assert linked_list.shift() == 3
     assert linked_list.shift() == None
+
+def test_unshift():
+    linked_list = DoublyLinkedList()
+    linked_list.unshift(1)
+    linked_list.unshift(2)
+    linked_list.unshift(3)
+    assert linked_list.print() == '3 -> 2 -> 1'
