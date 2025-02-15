@@ -79,3 +79,29 @@ class DoublyLinkedList:
             self.head.prev = new_node
             self.head = new_node
         self.length += 1
+
+    def get(self, index):
+        if index < 0 or index >= self.length:
+            return None
+        elif index < self.length / 2:
+            current_node = self.head
+            for _ in range(index):
+                current_node = current_node.next
+            return current_node
+        else:
+            current_node = self.tail
+            i = self.length - 1
+            while i > index:
+                current_node = current_node.prev
+                i -= 1
+            return current_node
+        
+    def set(self, index, value):
+        if index < 0 or index >= self.length:
+            return False
+        else:
+            current_node = self.get(index)
+            current_node.value = value
+            return True
+
+
