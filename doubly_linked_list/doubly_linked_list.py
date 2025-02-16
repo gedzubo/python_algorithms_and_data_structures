@@ -103,5 +103,26 @@ class DoublyLinkedList:
             current_node = self.get(index)
             current_node.value = value
             return True
+        
+    def insert(self, index, value):
+        if index < 0 or index > self.length:
+            return False
+        elif index == 0:
+            self.unshift(value)
+            return True
+        elif index == self.length:
+            self.push(value)
+            return True
+        else:
+            new_node = Node(value)
+            before = self.get(index - 1)
+            after = before.next
+
+            before.next = new_node
+            new_node.prev = before
+            new_node.next = after
+            after.prev = new_node
+            self.length += 1
+            return True
 
 
