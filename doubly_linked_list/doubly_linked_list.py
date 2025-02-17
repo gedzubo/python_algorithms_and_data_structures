@@ -124,5 +124,25 @@ class DoublyLinkedList:
             after.prev = new_node
             self.length += 1
             return True
+        
+    def remove(self, index):
+        if index < 0 or index >= self.length:
+            return False
+        elif index == 0:
+            self.shift()
+            return True
+        elif index == self.length - 1:
+            self.pop()
+            return True
+        else:
+            node_to_delete = self.get(index)
 
+            node_to_delete.prev.next = node_to_delete.next
+            node_to_delete.next.previous = node_to_delete.prev
+
+            node_to_delete.next = None
+            node_to_delete.prev = None
+
+            self.length -= 1
+            return True
 

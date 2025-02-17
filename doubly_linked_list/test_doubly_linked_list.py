@@ -84,3 +84,21 @@ def test_insert_out_of_bounds():
     linked_list.push(3)
     assert linked_list.insert(-1, 4) == False
     assert linked_list.insert(4, 4) == False
+
+def test_remove():
+    linked_list = DoublyLinkedList()
+    linked_list.push(1)
+    linked_list.push(2)
+    linked_list.push(3)
+    linked_list.remove(0)
+    linked_list.remove(1)
+    linked_list.remove(1)
+    assert linked_list.print() == '2'
+
+def test_remove_out_of_bounds():
+    linked_list = DoublyLinkedList()
+    linked_list.push(1)
+    linked_list.push(2)
+    linked_list.push(3)
+    assert linked_list.remove(-1) == False
+    assert linked_list.remove(3) == False
